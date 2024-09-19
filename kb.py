@@ -67,10 +67,10 @@ class KnowledgeBase:
         sitemap = requests.get(sitemap_url).text
         urls = extract_urls_from_sitemap(sitemap)
 
-        if pattern:
-            logger.info("Filtering URLs with pattern {pattern} ...", pattern=pattern)
-            urls = [x for x in urls if pattern in x]
-        logger.info("{n} URLs extracted", n=len(urls))
+        #if pattern:
+            #logger.info("Filtering URLs with pattern {pattern} ...", pattern=pattern)
+            #urls = [x for x in urls if pattern in x]
+        #logger.info("{n} URLs extracted", n=len(urls))
 
         logger.info("Loading URLs content ...")
         loader = UnstructuredURLLoader(urls)
@@ -104,7 +104,6 @@ if __name__ == "__main__":
     # Build the knowledge base
     kb = KnowledgeBase(
         sitemap_url="https://www.hdfclife.com/universal-sitemap.xml",
-        pattern="docs/api-refe",
         chunk_size=3000,
         chunk_overlap=500,
     )
