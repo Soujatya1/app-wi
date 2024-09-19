@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-from kb import KnowledgeBase
+from knowledge_base import KnowledgeBase
 
 # Page setup
 st.set_page_config(page_title="Website to AI-Powered Knowledge Base", page_icon="🐍")
@@ -47,8 +47,8 @@ def get_knowledge_base(url, pattern):
     return KnowledgeBase(
         sitemap_url=url,
         pattern=pattern,
-        chunk_size=8000,
-        chunk_overlap=3000,
+        chunk_size=3000,
+        chunk_overlap=200,
     )
 
 
