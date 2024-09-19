@@ -58,8 +58,7 @@ class KnowledgeBase:
         self,
         sitemap_url: str,
         chunk_size: int,
-        chunk_overlap: int,
-        pattern: Optional[str] = None,
+        chunk_overlap: int
     ):
         logger.info("Building the knowledge base ...")
 
