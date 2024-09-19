@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-from knowledge_base import KnowledgeBase
+from kb import KnowledgeBase
 
 # Page setup
 st.set_page_config(page_title="Website to AI-Powered Knowledge Base", page_icon="🐍")
