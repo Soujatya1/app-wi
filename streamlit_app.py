@@ -60,7 +60,7 @@ def get_answer(url, pattern, query):
 
 if sitemap_url:
     with st.spinner("Getting the knowledge base ready, this may take a bit ..."):
-        kb = get_knowledge_base(sitemap_url)
+        kb = get_knowledge_base(sitemap_url, pattern)
 
     query = st.text_input("Question", value="")
 
