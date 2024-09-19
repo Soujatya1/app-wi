@@ -35,8 +35,8 @@ col1, col2 = st.columns(2)
 with col1:
     sitemap_url = st.text_input("URL to the website sitemap", value="")
 
-#with col2:
-    #pattern = st.text_input("URL filter pattern (optional)", value="")
+with col2:
+    pattern = st.text_input("URL filter pattern (optional)", value="")
 
 
 st.markdown("## Ask")
