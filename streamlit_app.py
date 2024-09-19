@@ -46,6 +46,7 @@ st.markdown("## Ask")
 def get_knowledge_base(url, pattern):
     return KnowledgeBase(
         sitemap_url=url,
+        pattern = pattern,
         chunk_size=3000,
         chunk_overlap=200,
     )
