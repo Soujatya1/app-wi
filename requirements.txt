@@ -1,1 +1,12 @@
+langchain_community
+langchain_groq
+langchain_core
+PyPDF2
 streamlit
+faiss-cpu
+sentence_transformers
+beautifulsoup4
+requests
+lxml
+numpy
+pandas
