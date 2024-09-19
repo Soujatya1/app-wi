@@ -58,7 +58,7 @@ def get_answer(url, pattern, query):
     return kb.ask(query)
 
 
-if sitemap_url and pattern:
+if sitemap_url:
     with st.spinner("Getting the knowledge base ready, this may take a bit ..."):
         kb = get_knowledge_base(sitemap_url)
 
