@@ -9,11 +9,12 @@ Original file is located at
 
 from typing import Optional
 
-from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.document_loaders import UnstructuredURLLoader
-from langchain.chat_models import ChatOpenAI
+from langchain_groq import ChatGroq
 from langchain.chains import RetrievalQAWithSourcesChain
 
 import requests
@@ -23,6 +24,9 @@ from loguru import logger
 
 load_dotenv()
 
+api_key = "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"
+
+llm = ChatGroq(groq_api_key = api_key, model_name = 'llama-3.1-70b-versatile', temperature = 0.2, top_p = 0.2)
 
 def extract_urls_from_sitemap(sitemap):
     """
@@ -80,8 +84,8 @@ class KnowledgeBase:
         logger.info("{n} chunks created", n=len(docs))
 
         logger.info("Building the vector database ...")
-        embeddings = OpenAIEmbeddings()
-        docsearch = Chroma.from_documents(docs, embeddings)
+        hf_embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
+        vector_db = FAISS.from_documents(docs, hf_embedding)
 
         logger.info("Building the retrieval chain ...")
         self.chain = RetrievalQAWithSourcesChain.from_chain_type(
