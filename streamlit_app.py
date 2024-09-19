@@ -35,7 +35,7 @@ col1, col2 = st.columns(2)
 with col1:
     sitemap_url = st.text_input("URL to the website sitemap", value="")
 
-with col2:
+#with col2:
     pattern = st.text_input("URL filter pattern (optional)", value="")
 
 
@@ -46,7 +46,6 @@ st.markdown("## Ask")
 def get_knowledge_base(url, pattern):
     return KnowledgeBase(
         sitemap_url=url,
-        pattern=pattern,
         chunk_size=3000,
         chunk_overlap=200,
     )
@@ -60,7 +59,7 @@ def get_answer(url, pattern, query):
 
 if sitemap_url and pattern:
     with st.spinner("Getting the knowledge base ready, this may take a bit ..."):
-        kb = get_knowledge_base(sitemap_url, pattern)
+        kb = get_knowledge_base(sitemap_url)
 
     query = st.text_input("Question", value="")
 
