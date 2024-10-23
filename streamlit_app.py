@@ -10,6 +10,7 @@ from langchain.document_loaders import WebBaseLoader
 import requests
 from bs4 import BeautifulSoup
 import hashlib
+from langchain_core.prompts import ChatPromptTemplate
 
 # Hard-coded sitemap URLs and filter keywords
 sitemap_urls = [
