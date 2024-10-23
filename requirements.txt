@@ -8,6 +8,5 @@ sentence_transformers
 beautifulsoup4
 requests
 lxml
-numpy
-pandas
-loguru
+aiohttp
+asyncio
