@@ -13,13 +13,11 @@ import hashlib
 
 # Hard-coded sitemap URLs and filter keywords
 sitemap_urls = [
-    "https://example.com/sitemap1.xml",
-    "https://example.com/sitemap2.xml"
+    "https://www.hdfclife.com/universal-sitemap.xml",
+    "https://www.iciciprulife.com/sitemap.xml"
 ]
 filter_words = [
-    "insurance", 
-    "policy", 
-    "coverage"
+    "term-insurance"
 ]
 
 # Initialize session state variables
