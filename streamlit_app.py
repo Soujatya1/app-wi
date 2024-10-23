@@ -13,7 +13,7 @@ import hashlib
 
 # Hard-coded sitemap URLs and filter keywords
 sitemap_urls = [
-    "https://www.hdfclife.com/universal-sitemap.xml",
+    "https://www.tataaia.com/sitemap.xml",
     "https://www.reliancenipponlife.com/sitemap.xml"
 ]
 filter_words = [
