@@ -11,6 +11,7 @@ import requests
 from bs4 import BeautifulSoup
 import hashlib
 from langchain_core.prompts import ChatPromptTemplate
+from langchain.chains.combine_documents import create_stuff_documents_chain
 
 # Hard-coded sitemap URLs and filter keywords
 sitemap_urls = [
