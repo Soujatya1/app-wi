@@ -15,7 +15,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 
 # Hard-coded sitemap URLs and filter keywords
 sitemap_urls = [
-    "https://www.tataaia.com/sitemap.xml",
+    "https://www.kotaklife.com/main-sitemap.xml",
     "https://www.reliancenipponlife.com/sitemap.xml"
 ]
 filter_words = [
