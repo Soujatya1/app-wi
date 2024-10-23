@@ -43,7 +43,6 @@ api_key = "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"
 @st.cache_resource
 def load_and_process_documents(sitemap_urls, filter_urls):
     all_urls = []
-    filtered_urls = []
     loaded_docs = []
 
     for sitemap_url in sitemap_urls:
@@ -55,9 +54,8 @@ def load_and_process_documents(sitemap_urls, filter_urls):
             soup = BeautifulSoup(sitemap_content, 'xml')
             urls = [loc.text for loc in soup.find_all('loc')]
 
-            # Filter URLs
-            selected_urls = [url for url in urls if any(filter in url for filter in filter_urls)]
-            filtered_urls.extend(selected_urls)
+            # Filter URLs for this specific sitemap
+            filtered_urls = [url for url in urls if any(filter in url for filter in filter_urls)]
 
             for url in filtered_urls:
                 try:
@@ -69,10 +67,12 @@ def load_and_process_documents(sitemap_urls, filter_urls):
                     loaded_docs.extend(docs)
                 except Exception as e:
                     st.write(f"Error loading {url}: {e}")
+
+            all_urls.extend(filtered_urls)  # Collect all processed URLs
         except Exception as e:
             st.write(f"Error processing sitemap {sitemap_url}: {e}")
 
-    return loaded_docs
+    return loaded_docs, all_urls  # Return both the docs and processed URLs
 
 # Cache embeddings and vector database creation
 @st.cache_resource
@@ -97,7 +97,7 @@ def create_vector_db(_docs, _hf_embedding, existing_vector_db=None):
 def process_new_urls(sitemap_urls, filter_words, cached_urls):
     """Process new URLs by filtering out already processed ones."""
     new_urls = list(set(sitemap_urls) - set(cached_urls))
-    new_docs = load_and_process_documents(new_urls, filter_words)
+    new_docs, new_urls = load_and_process_documents(new_urls, filter_words)
     return new_docs, new_urls
 
 def get_cache_key(urls, filter_words):
@@ -142,13 +142,13 @@ if st.button("Load and Process"):
         
     else:
         # Process and embed all URLs (no cache available)
-        loaded_docs = load_and_process_documents(sitemap_urls, filter_words)
+        loaded_docs, processed_urls = load_and_process_documents(sitemap_urls, filter_words)
         hf_embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
         st.session_state['vector_db'], num_chunks = create_vector_db(loaded_docs, hf_embedding)
         
         # Cache the embeddings and document URLs
-        st.session_state['embedding_cache'][cache_key] = (st.session_state['vector_db'], num_chunks, sitemap_urls)
-        st.write(f"Processed and embedded {len(sitemap_urls)} URLs. Number of chunks: {num_chunks}")
+        st.session_state['embedding_cache'][cache_key] = (st.session_state['vector_db'], num_chunks, processed_urls)
+        st.write(f"Processed and embedded {len(processed_urls)} URLs. Number of chunks: {num_chunks}")
     
     # LLM Initialization and prompt setup
     if api_key:
