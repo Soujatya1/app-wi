@@ -15,11 +15,10 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 
 # Hard-coded sitemap URLs and filter keywords
 sitemap_urls = [
-    "https://www.kotaklife.com/main-sitemap.xml",
-    "https://www.reliancenipponlife.com/sitemap.xml"
+    "https://www.federalbank.co.in/sitemap.xml"
 ]
 filter_words = [
-    "term-insurance"
+    "whatsapp"
 ]
 
 # Initialize session state variables
