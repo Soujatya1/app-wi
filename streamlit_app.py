@@ -17,7 +17,7 @@ sitemap_urls = [
     "https://irdai.gov.in/sitemap.xml"
 ]
 filter_words = [
-    ""
+    "gov"
 ]
 
 if 'loaded_docs' not in st.session_state:
