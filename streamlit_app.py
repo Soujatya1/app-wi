@@ -15,7 +15,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 
 # Hard-coded sitemap URLs and filter keywords
 sitemap_urls = [
-    "https://www.federalbank.co.in/sitemap.xml"
+    "https://irdai.gov.in/sitemap.xml"
 ]
 filter_words = [
     "whatsapp"
