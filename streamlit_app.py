@@ -13,7 +13,6 @@ import hashlib
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
 
-# Hard-coded sitemap URLs and filter keywords
 sitemap_urls = [
     "https://irdai.gov.in/sitemap.xml"
 ]
@@ -21,7 +20,6 @@ filter_words = [
     ""
 ]
 
-# Initialize session state variables
 if 'loaded_docs' not in st.session_state:
     st.session_state['loaded_docs'] = []
 if 'vector_db' not in st.session_state:
@@ -38,7 +36,6 @@ st.title("Website Intelligence")
 
 api_key = "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"
 
-# Cache the loading and processing of URLs and documents
 @st.cache_resource
 def load_and_process_documents(sitemap_urls, filter_urls):
     all_urls = []
