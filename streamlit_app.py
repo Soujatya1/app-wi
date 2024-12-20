@@ -18,7 +18,7 @@ sitemap_urls = [
     "https://irdai.gov.in/sitemap.xml"
 ]
 filter_words = [
-    "whatsapp"
+    ""
 ]
 
 # Initialize session state variables
