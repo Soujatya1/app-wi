@@ -14,10 +14,10 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
 
 sitemap_urls = [
-    "https://irdai.gov.in/sitemap.xml"
+    "https://bandhanbank.com/sitemap.xml"
 ]
 filter_words = [
-    "gov"
+    "careers"
 ]
 
 if 'loaded_docs' not in st.session_state:
